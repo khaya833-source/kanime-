@@ -72,7 +72,7 @@
 
 ## Overview
 
-hianime-api is a comprehensive RESTful API that provides endpoints to retrieve anime details, episodes, and streaming links by scraping content from zangetsu.cc. Built with modern web technologies, it offers a robust solution for anime content aggregation.
+hianime-api is a comprehensive RESTful API that provides endpoints to retrieve anime details, episodes, and streaming links by scraping content from kanime.cc. Built with modern web technologies, it offers a robust solution for anime content aggregation.
 
 ## Important Notice
 
