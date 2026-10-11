@@ -1,14 +1,14 @@
-import { buildEmbedUrl, ServerType } from '../services/zangetsu';
+import { buildEmbedUrl, ServerType } from '../services/kanime';
 
-export interface ZangetsuServerJson {
+export interface kanimeServerJson {
   serverId?: string;
   serverName?: string;
   index?: number;
 }
 
 export interface ServerPayload {
-  sub?: ZangetsuServerJson[];
-  dub?: ZangetsuServerJson[];
+  sub?: kanimeServerJson[];
+  dub?: kanimeServerJson[];
 }
 
 export interface ServerEntry {
