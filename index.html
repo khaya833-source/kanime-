@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K Anime - Watch Free Anime Online</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#8B5CF6',
+                            600: '#7C3AED',
+                            700: '#6D28D9',
+                            dark: '#0F0E17',
+                            card: '#1A1B26',
+                            accent: '#FF007A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0F0E17;
+            color: #FFFFFE;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0F0E17;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2E303E;
+            border-radius: 4px;
+        }
+        .anime-card:hover .play-overlay {
+            opacity: 1;
+        }
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="custom-scrollbar min-h-screen flex flex-col justify-between">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="loadTrending()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-brand-accent flex items-center justify-center font-bold text-xl shadow-lg shadow-brand-500/30">
+                    K
+                </div>
+                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-white via-purple-200 to-brand-500 bg-clip-text text-transparent">K ANIME</span>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full max-w-xs sm:max-w-md mx-4">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="searchInput" placeholder="Search anime, e.g., Naruto, One Piece..." 
+                       class="w-full bg-gray-900/80 text-sm rounded-full pl-10 pr-4 py-2 border border-gray-700 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all text-white placeholder-gray-500">
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#" onclick="loadTrending()" class="hover:text-brand-500 transition-colors">Trending</a>
+                <a href="#" onclick="fetchCategory('popular')" class="hover:text-brand-500 transition-colors">Popular</a>
+                <a href="#" onclick="fetchCategory('movies')" class="hover:text-brand-500 transition-colors">Movies</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+        
+        <!-- Hero Banner -->
+        <section class="relative rounded-2xl overflow-hidden mb-10 bg-gradient-to-r from-brand-700 to-indigo-900 p-6 sm:p-10 shadow-2xl">
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="px-3 py-1 bg-brand-accent/20 border border-brand-accent/50 text-brand-accent text-xs font-semibold rounded-full uppercase tracking-wider">Featured Release</span>
+                <h1 id="heroTitle" class="text-3xl sm:text-5xl font-black mt-3 mb-2 leading-tight">Solo Leveling Season 2</h1>
+                <p id="heroDescription" class="text-gray-300 text-sm sm:text-base line-clamp-2 mb-6">
+                    Follow Jinwoo as he faces even greater hurdles in his quest to protect humanity while unleashing overwhelming dark power.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <button onclick="playAnime('Solo Leveling', 'https://www.w3schools.com/html/mov_bbb.mp4')" class="px-6 py-3 bg-brand-accent hover:bg-pink-600 text-white font-bold rounded-xl flex items-center space-x-2 transition-all transform active:scale-95 shadow-lg shadow-brand-accent/40">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Watch Now</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anime Section Header -->
+        <div class="flex items-center justify-between mb-6">
+            <h2 id="sectionTitle" class="text-xl sm:text-2xl font-bold flex items-center space-x-2">
+                <i class="fa-solid fa-fire text-brand-accent"></i>
+                <span>Trending Anime</span>
+            </h2>
+            <span id="cardCount" class="text-xs text-gray-400">Loading library...</span>
+        </div>
+
+        <!-- Anime Cards Grid -->
+        <div id="animeGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            <!-- Dynamic items rendered by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="bg-brand-card border border-gray-800 rounded-2xl w-full max-w-4xl overflow-hidden shadow-2xl relative">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+                <h3 id="modalAnimeTitle" class="font-bold text-lg text-white truncate">Watching Episode</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-xl p-1 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <div class="relative aspect-video bg-black">
+                <video id="videoPlayer" controls class="w-full h-full">
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support HTML5 video playback.
+                </video>
+            </div>
+
+            <div class="p-4 bg-gray-900 flex justify-between items-center text-xs text-gray-400">
+                <span>Server: <strong class="text-brand-500">Primary K-API Node</strong></span>
+                <span>Quality: <strong class="text-green-400">1080p Auto</strong></span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-gray-800 bg-brand-dark py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500">
+            <p>K Anime &copy; 2026. Built for seamless streaming on GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <script>
+        // CONFIGURATION: Set your custom backend API base URL here
+        const API_BASE_URL = "https://khayall333-source.github.io/api"; // Replace with your real API endpoint if active
+
+        // Fallback Mock Data in case backend API isn't responding yet
+        const mockAnimeData = [
+            { title: "Solo Leveling", episodes: 12, rating: "8.9", image: "https://placehold.co/400x600/1A1B26/FF007A?text=Solo+Leveling", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Jujutsu Kaisen", episodes: 24, rating: "8.8", image: "https://placehold.co/400x600/1A1B26/8B5CF6?text=Jujutsu+Kaisen", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Demon Slayer", episodes: 26, rating: "8.7", image: "https://placehold.co/400x600/1A1B26/FF007A?text=Demon+Slayer", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "One Piece", episodes: 1090, rating: "9.0", image: "https://placehold.co/400x600/1A1B26/8B5CF6?text=One+Piece", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Attack on Titan", episodes: 89, rating: "9.1", image: "https://placehold.co/400x600/1A1B26/FF007A?text=Attack+on+Titan", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Bleach: TYBW", episodes: 26, rating: "8.9", image: "https://placehold.co/400x600/1A1B26/8B5CF6?text=Bleach+TYBW", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Kaiju No. 8", episodes: 12, rating: "8.4", image: "https://placehold.co/400x600/1A1B26/FF007A?text=Kaiju+No.+8", video: "https://www.w3schools.com/html/mov_bbb.mp4" },
+            { title: "Chainsaw Man", episodes: 12, rating: "8.5", image: "https://placehold.co/400x600/1A1B26/8B5CF6?text=Chainsaw+Man", video: "https://www.w3schools.com/html/mov_bbb.mp4" }
+        ];
+
+        // Load content on application boot
+        window.addEventListener('DOMContentLoaded', () => {
+            loadTrending();
+
+            // Real-time local search bar listener
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase().trim();
+                if (!query) {
+                    renderCards(mockAnimeData);
+                    return;
+                }
+                const filtered = mockAnimeData.filter(item => item.title.toLowerCase().includes(query));
+                renderCards(filtered);
+            });
+        });
+
+        // Load trending anime from backend API or fallback mock
+        async function loadTrending() {
+            document.getElementById('sectionTitle').innerText = "Trending Anime";
+            try {
+                // Example call to real backend API:
+                // const response = await fetch(`${API_BASE_URL}/trending`);
+                // const data = await response.json();
+                // renderCards(data);
+
+                renderCards(mockAnimeData);
+            } catch (err) {
+                console.warn("Backend API unavailable, displaying default catalog.", err);
+                renderCards(mockAnimeData);
+            }
+        }
+
+        // Render Cards inside Grid
+        function renderCards(animeList) {
+            const grid = document.getElementById('animeGrid');
+            const cardCount = document.getElementById('cardCount');
+            grid.innerHTML = '';
+            
+            cardCount.innerText = `${animeList.length} titles available`;
+
+            if (animeList.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500">No anime found matching your search term.</div>`;
+                return;
+            }
+
+            animeList.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = "anime-card bg-brand-card rounded-xl overflow-hidden border border-gray-800 shadow-md hover:shadow-brand-500/20 transition-all duration-300 flex flex-col justify-between cursor-pointer group";
+                card.onclick = () => playAnime(anime.title, anime.video);
+
+                card.innerHTML = `
+                    <div class="relative overflow-hidden aspect-[2/3] bg-gray-900">
+                        <img src="${anime.image}" alt="${anime.title}" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="play-overlay absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="w-12 h-12 rounded-full bg-brand-accent flex items-center justify-center text-white text-xl shadow-lg transform group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                        <span class="absolute top-2 right-2 bg-black/70 backdrop-blur-md text-amber-400 font-bold text-xs px-2 py-1 rounded-md border border-amber-400/30">
+                            ★ ${anime.rating}
+                        </span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-white truncate group-hover:text-brand-500 transition-colors">${anime.title}</h3>
+                        <p class="text-xs text-gray-400 mt-1">EP ${anime.episodes} • Sub | Dub</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Video Player Modal Trigger
+        function playAnime(title, videoUrl) {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('videoPlayer');
+            const source = document.getElementById('videoSource');
+            const titleElem = document.getElementById('modalAnimeTitle');
+
+            titleElem.innerText = `Watching: ${title}`;
+            source.src = videoUrl;
+            player.load();
+            modal.classList.remove('hidden');
+            player.play().catch(() => console.log('Autoplay blocked by browser policy.'));
+        }
+
+        // Close Modal
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('videoPlayer');
+            player.pause();
+            modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
