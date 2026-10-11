@@ -6,7 +6,7 @@ export interface ScheduledAnime {
   episode: number | null;
 }
 
-export interface ZangetsuScheduleJson {
+export interface kanimeScheduleJson {
   id?: string | number;
   slug?: string;
   title?: string;
@@ -17,7 +17,7 @@ export interface ZangetsuScheduleJson {
   time?: string;
 }
 
-export const extractSchedule = (items: ZangetsuScheduleJson[]): ScheduledAnime[] => {
+export const extractSchedule = (items: kanimeScheduleJson[]): ScheduledAnime[] => {
   if (!Array.isArray(items)) return [];
   return items.map(item => ({
     title: item.title || item.name || null,
