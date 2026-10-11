@@ -1480,7 +1480,7 @@ console.log(data);
 Thanks to the following people for keeping this project alive and relevant:
 
 <a href="https://github.com/khaya833-source/hianime-api/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ryanwtf7/hianime-api" alt="Contributors" />
+  <img src="https://contrib.rocks/image?repo=khaya833-source/hianime-api" alt="Contributors" />
 </a>
 
 Want to contribute? Check out our [contribution guidelines](https://github.com/khaya833-source/hianime-api/blob/main/CONTRIBUTING.md) and feel free to submit a pull request!
@@ -1506,7 +1506,7 @@ If you find this project useful, please consider giving it a star on GitHub!
 
 <div align="center">
 
-**Made by RY4N**
+**Made by khaya**
 
 [Report Bug](https://github.com/khaya833-source/hianime-api/issues) • [Request Feature](https://github.com/khaya833-source/hianime-api/issues)
 
