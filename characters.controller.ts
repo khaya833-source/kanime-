@@ -7,7 +7,7 @@ import {
   CdnCharactersResponse,
   extractCdnCharacters,
 } from '../extractor/extractCharacters';
-import { animeNumId } from '../services/zangetsu';
+import { animeNumId } from '../services/kanime';
 
 const PAGE_SIZE = 12;
 
