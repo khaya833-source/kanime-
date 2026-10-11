@@ -21,7 +21,7 @@ export interface ListPageAnime extends AnimeFeatured {
   duration: string | null;
 }
 
-export interface ZangetsuFilterJson {
+export interface kanimeFilterJson {
   id?: string | number;
   slug?: string;
   titles?: { romaji?: string; english?: string; native?: string };
@@ -39,7 +39,7 @@ export interface ZangetsuFilterJson {
 
 export interface FilterAjaxResponse {
   success?: boolean;
-  data?: ZangetsuFilterJson[];
+  data?: kanimeFilterJson[];
   page?: number;
   pages?: number;
   total?: number;
