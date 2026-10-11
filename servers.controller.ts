@@ -1,7 +1,7 @@
 import { Context } from 'hono';
 import { validationError } from '../utils/errors';
 import { extractServers, ServerPayload, ServersResponse } from '../extractor/extractServers';
-import { ServerType, zangetsuAjax } from '../services/zangetsu';
+import { ServerType, kanimeAjax } from '../services/kanime';
 
 const serversController = async (c: Context): Promise<ServersResponse> => {
   const episodeId = c.req.param('episodeId');
@@ -22,7 +22,7 @@ const serversController = async (c: Context): Promise<ServersResponse> => {
 
   let payload: ServerPayload;
   try {
-    payload = await zangetsuAjax<ServerPayload>(
+    payload = await kanimeAjax<ServerPayload>(
       `/ajax/server?episodeId=${encodeURIComponent(episodeId)}&sub=${sub}&dub=${dub}`
     );
   } catch (err: unknown) {
