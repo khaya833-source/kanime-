@@ -1,11 +1,11 @@
 import { Context } from 'hono';
 import { validationError } from '../utils/errors';
-import { extractEpisodes, Episode, ZangetsuEpisodeJson } from '../extractor/extractEpisodes';
-import { animeNumId, zangetsuAjax } from '../services/zangetsu';
+import { extractEpisodes, Episode, kanimeEpisodeJson } from '../extractor/extractEpisodes';
+import { animeNumId, kanimeAjax } from '../services/kanime';
 
 interface EpisodesAjaxResponse {
   success: boolean;
-  episodes: ZangetsuEpisodeJson[];
+  episodes: kanimeEpisodeJson[];
 }
 
 const episodesController = async (c: Context): Promise<Episode[]> => {
@@ -15,7 +15,7 @@ const episodesController = async (c: Context): Promise<Episode[]> => {
 
   let data: EpisodesAjaxResponse;
   try {
-    data = await zangetsuAjax<EpisodesAjaxResponse>(
+    data = await kanimeAjax<EpisodesAjaxResponse>(
       `/ajax/episodes?animeId=${encodeURIComponent(animeNumId(id))}`,
       `/watch/${id}?ep=1`
     );
