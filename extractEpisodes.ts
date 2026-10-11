@@ -17,7 +17,7 @@ export interface Episode {
   malId: string | null;
 }
 
-export interface ZangetsuEpisodeJson {
+export interface kanimeEpisodeJson {
   id?: string | number;
   number?: number;
   titles?: { en?: string; romaji?: string; ja?: string };
@@ -31,7 +31,7 @@ export interface ZangetsuEpisodeJson {
   filler?: boolean;
 }
 
-export const extractEpisodes = (episodes: ZangetsuEpisodeJson[]): Episode[] => {
+export const extractEpisodes = (episodes: kanimeEpisodeJson[]): Episode[] => {
   if (!Array.isArray(episodes)) return [];
   return episodes.map((ep, i) => {
     const num = typeof ep.number === 'number' ? ep.number : i + 1;
