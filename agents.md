@@ -30,7 +30,7 @@ Bun + Hono + TypeScript REST API that scrapes **kanime.cc** (cheerio + its JSON 
 - Controllers return **raw data only**; `src/utils/handler.ts` wraps every route result into `{ success: true, data }`. Don't double-wrap.
 - Errors: throw `AppError`/`NotFoundError`/`validationError` (note lowercase `v`) from `src/utils/errors.ts`; they map to `{ success: false, message, details }` via `src/utils/response.ts`.
 
-## Source quirks (zangetsu.cc specifics)
+## Source quirks (kanime.cc specifics)
 
 - Numeric site ids are always the last `-` segment (`one-piece-12` → `12`); `animeNumId()` helper does this. Episode ids from `/ajax/episodes` are global numerics (e.g. `"1"`), used as `:episodeId` for `/servers/:episodeId`.
 - Characters full list comes from a different host: `GET https://cdnanimo.xyz/anime/<numId>/characters` (public, no token), paginated client-side in the controller. Character/VA ids are numeric (`character:1480`, `people:7111`); `/character/:id` maps `:` → `/`.
