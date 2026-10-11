@@ -3,7 +3,7 @@ import { validationError } from '../utils/errors';
 import {
   extractSchedule,
   ScheduledAnime,
-  ZangetsuScheduleJson,
+  kanimeScheduleJson,
 } from '../extractor/extractSchedule';
 import { axiosInstance } from '../services/axiosInstance';
 
