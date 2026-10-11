@@ -80,7 +80,7 @@ hianime-api is a comprehensive RESTful API that provides endpoints to retrieve a
 
 1. This API is recommended for **personal use only**. Deploy your own instance and customize it as needed.
 
-2. This API is just an **unofficial API for [zangetsu.cc](https://kanime.cc)** and is in no other way officially related to the same.
+2. This API is just an **unofficial API for [kanime.cc](https://kanime.cc)** and is in no other way officially related to the same.
 
 3. The content that this API provides is not mine, nor is it hosted by me. These belong to their respective owners. This API just demonstrates how to build an API that scrapes websites and uses their content.
 
