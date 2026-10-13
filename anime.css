@@ -1,0 +1,335 @@
+body
+{
+    width:1270px;
+    height:2275px;
+    color: rgb(204, 204, 204);
+    font-family :Poppins, Arial;
+    font-size :14px;
+    font-weight :400;
+    background-color: rgb(32, 31, 49);
+}
+
+header
+{
+    margin-top: 60px;
+    height:60px;
+    width:1260px;
+    
+}
+
+    .header-container
+     {
+        height:60px;
+        width:1170px;
+        display:flex;
+        padding-left:350px;
+        padding-right:290px ;
+        box-sizing: border-box;
+        justify-content:space-between;
+     }
+       .header1
+       {
+        height: 60px;
+        padding-top:10px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor:pointer;
+       }
+         .header1:hover
+         {
+        color: #f89341; ;
+         }
+
+
+         /* intro content */
+         .intro
+          {
+            width:1260px;
+          }
+
+              .intro-container
+              {
+                width:1200px;
+                padding:10px 30px;
+                height:540px; 
+                
+              }
+                  .intro-left
+                  {
+                    float:left;
+                    width:550px;
+                    height:540px; 
+                    background: linear-gradient(90deg, rgba(43, 42, 60, 1) 0%, rgba(43, 42, 60, 0) 100%);
+                    border-radius: 40px 0px 0px 40px;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:space-between;
+                    padding:100px 0px 40px 100px;
+                    box-sizing: border-box;
+                  }
+                    .left 
+                     {
+                        
+                        height:40px;
+                       
+                     }
+                    
+                     .card1 img
+                      {
+                        height: 40px;
+                        width: auto;
+                      } 
+                .card2
+                {
+                    height: 50px;
+                    width:510px;
+                } 
+                      .card2 input
+                      {
+                        float:left;
+                        height: 50px;
+                        font-weight: 400;
+                        border-radius: 12px;
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        font-size: 16px;
+                        border: none;
+                        width:400px;
+                      }
+                     .card2 button
+                     {
+                        float:right;
+                        background-color: #ffbade;
+                        height:54px;
+                        width:54px;
+                        border-radius:12px;
+                        
+                     }
+                     .card3
+                     {
+                        height:128px;
+                     }
+                     .card3 p
+                     {
+                        height:128px;
+                        line-height: 2;
+                        font-weight: 600;
+                        cursor: pointer;
+                    }
+                    .card4 button
+                    {
+                        width: 260px;
+                        height:60px;
+                        border-radius: 12px;
+                        padding: 15px 20px;
+                        font-weight: 600;
+                        background: #ffbade ;
+                        color: #111;
+                        font-size: 20px;
+                        cursor: pointer; 
+                    }
+                       .card4 button:hover
+                        {
+                            background-color: #f694c7;
+                        }
+                  .intro-right
+                  {
+                    float:left;
+                    width:650px;
+                    height:540px; 
+                    border-radius: 0 40px 40px 0;
+                  }
+                     .intro-right img
+                        {
+                            width:650px;
+                            height:540px;
+                            border-radius: 0px 40px 40px 0px;  
+                            object-fit: cover;
+                            opacity: .4;   
+                        }
+                
+    /* main body */
+
+    .mainbody
+    {
+        height:1500px;
+        width:1200px;
+        padding:30px;
+       
+    }
+    .share-body
+    {
+        height:40px;
+        width:1170px;
+        padding:0px 15px;
+      
+        
+    }
+    .share
+    {
+     float:left;
+     height:40px;
+     width:106px;
+     display:flex;
+     flex-direction: column;
+     padding-right:10px;
+    }
+       .share-hianime
+       {
+        height:20px;
+        width:106px;
+        font-weight: 600;
+        font-size: 14px;
+       }
+       .to-friends
+       {
+        height:20px;
+        font-size: 12px;
+       }
+       .body3
+       {
+        margin-top: 10px;
+       }
+       .body3 img
+       {
+        width:50px;
+        height:32px;
+       }
+    
+ .comment-body
+ {
+    padding-top:30px;
+    height:1300px;
+    width:1170px;
+   
+ }
+
+ .comment-body-left
+ {
+    float:left;
+    height:1300px;
+    width:720px;
+    /* background-color: aquamarine; */
+ }
+
+ .comment-body-left h1 .comment-body-right-header h1
+ {
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0 0 1em;
+    color: #fff;
+    line-height: 1.4em;
+ }
+ .comment-body-left h2 .comment-qa
+{
+    font-size: 1.5em;
+    margin-top: 1.5em;
+    font-weight: 600;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+    color: #fff;
+
+}
+ .comment-body-left p .comment-ans p
+ {  
+    line-height: 1.9em;
+    margin-bottom: 1em;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 500;
+ }
+ .comment-body-left ul li
+ {
+    line-height: 1.9em;
+    margin-bottom: 1em;
+    font-size: 14px;
+    text-align: left;
+    font-weight: 400;
+    
+ }
+ .comment-body-right
+ {
+    float:right;
+    height:1300px;
+    width:400px;
+    
+ }
+  .comment-body-right-header
+  {
+    height:30px;
+    width:400px;
+    margin-bottom:30px;
+    
+  }
+  .comment-container
+  {
+    height:1100px;
+    width:400px;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+  }
+     .item
+     {
+       height:178px;
+       padding: 20px;
+       width:400px;
+       border-radius: 1rem;
+       font-size: 12px;
+       line-height: 1.4;
+       background: rgb(255, 255, 255, .05);
+       margin-bottom: .5rem;
+     }
+  .comment-body-right-footer
+  {
+    margin-top:30px;
+    height:35px;
+    width:400px;
+   
+  }
+     .comment-body-right-footer button
+     {
+      background-color: rgba(255, 255, 255, .1);
+      border-radius: 30px;
+      font-size: 14px;
+      color: #fff ;
+      padding: .5rem ;
+      width:400px;
+      cursor:pointer;
+     }
+     .comment-body-right-footer button:hover
+       {
+         color: #f89341;
+       }
+
+
+
+/* footer */
+footer
+{
+  height:100px;
+  width:1200px;
+}
+   .footer-container
+   {
+      padding: 0px 15px;
+      margin: 0px  32px;
+   }
+   .comment-footer p
+   {
+      font-size:14px;
+      letter-spacing:.1em;
+   }
+    .comment-qa h2
+    {
+      cursor:pointer;
+    }
+       .comment-qa:hover
+       {
+         text-decoration:underline;
+         color: #f694c7;
+       }
