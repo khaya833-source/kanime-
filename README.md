@@ -1,4 +1,4 @@
-# hianime-api
+# kanime-api
 
 <div align="center">
 
